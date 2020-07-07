@@ -73,8 +73,8 @@ function addCompte(){
         document.getElementById("champs5").style.display= "none";
         document.getElementById("champs2").style.display= "none";
      }else{
-        var xhttp = new XMLHttpRequest();
-        var url = "../../controller/CompteController.php";
+  /*    var xhttp = new XMLHttpRequest();
+        var url = "../../controller/CompteClientController.php";
 
         var id = document.getElementById("idclient").value;
         var numero = document.getElementById("numCompte").value;
@@ -116,7 +116,7 @@ function addCompte(){
             }
         };
             xhttp.send(vars); 
-            document.getElementById("status").innerHTML = "processing...";
+            document.getElementById("status").innerHTML = "processing...";*/
         }
       
     }

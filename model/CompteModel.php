@@ -1,52 +1,32 @@
 <?php
 require_once 'DB.php';
+require_once '../entities/Compte.php';
 
-function addCompte($cleRib,$date,$numero,$solde,$etat,$frais,$typeCompte,$proprietaire){
-  
-    $sql ="INSERT INTO `compte` VALUES (NULL, '$numero', NULL, '$cleRib', '$date', '$solde', '$typeCompte', '$etat', '$frais', NULL,'$proprietaire', NULL)";
-    return executeSQL($sql);
-}
-function addClient($nom,$prenom,$adresse,$email,$tel,$salaire,$nomEntreprise,$type){
-    $sql = "INSERT INTO `client`  VALUES (NULL,'$nom','$prenom','$adresse','$email','','$salaire','$type',NULL,'$nomEntreprise','$tel')";                                           
-    return executeSQL($sql);
+class CompteModel{
 
-}
-function addClientEntreprise($adresse,$email,$nomEntreprise,$type,$tel){
-    $sql = "INSERT INTO client(adresse,email,idType,nomEntreprise,telephone) VALUES ('$adresse','$email','$type','$nomEntreprise','$tel')";                                           
-    return executeSQL($sql);
-    echo(  $sql -> error());
-    
+    private $db;
 
-}
+    public  function __construct()
+    {
+          $this->db =  new DB;;
+    }
 
-function listeCompte(){
-    $sql = "SELECT * FROM `compte`";
-    return executeSQL($sql);
-} 
-function typeclient($libelle){
-    $sql = "INSERT INTO `typeclient` Values (NULL,$libelle)";
-    return executeSQL($sql);
-}
-function getCient($client)
-{
-    $sql = "SELECT idC FROM `client` WHERE idC = '$client' ";
-    return executeSQL($sql);
-}
+    public function addCompte(Compte $compte)
+    {
 
-function getCientByName($client)
-{
-    $sql = "SELECT * FROM `typeclient` WHERE libelle = '$client' ";
-    return executeSQL($sql);
-}
-function getLastClient(){
-    $sql = "SELECT max(idC) FROM  `client`";
-    return executeSQL($sql);
-}
+        $sql ="INSERT INTO `compte` VALUES (NULL, '".$compte->getNumero()."', NULL, '".$compte->getcleRib()."', '".$compte->getDate()."', '".$compte->getSolde()."', '".$compte->getTypeCompte()."', '".$compte->getEtat()."', '".$compte->getFrais()."', NULL,'".$compte->getProprietaire()."', NULL)";
+        return $this->db->executeInsert($sql);
+    }
 
-function addEmployeur(){
+   
 
-}
+    public function listeCompte()
+    {
+ 
+        $sql = "SELECT * FROM `compte`";
+        return $this->db->executeSelect($sql);
+    } 
+   
 
-function getNomclient(){
-    $sql = "";
+
 }

@@ -2,3 +2,7 @@ RewriteEngine On
 
 RewriteRule ^index$ index.php
 RewriteRule ^.{0}$ index.php
+
+RewriteRule ^CompteClients$  controller/CompteClientController.php
+RewriteRule ^addCompte$  view/compte/add.php
+RewriteRule ^listeCompte$  view/compte/liste.php

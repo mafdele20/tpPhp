@@ -1,26 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/css/compte.css">
-    <script type="text/javascript" src="compte.js"></script>
+    <link rel="stylesheet" href="./public/css/compte.css">
+    <script type="text/javascript" src="./public/js/compte.js"></script>
 </head>
 <body>
     <div class="compte">
         <nav class="navbar">
         <div class="row">
            <div class="col-25">
-             <img src="../../public/logo.jpeg" alt="logo" id="logo">
+             <img src="./public/logo.jpeg" alt="logo" id="logo">
              <h1>BANQUE DU PEUPLE</h1>
            </div>
            <div class="col-75">
             <ul>
-                <li><a href="./add.php">Ajout Compte</a></li>
-                <li><a href="./liste.php">Liste des Comptes</a></li>
-                <li><img src="../../public/user-connect.png" alt="Avatar" class="user"><a> gadiaga</a></li>
+                <li><a href="addCompte">Ajout Compte</a></li>
+                <li><a href="listeCompte">Liste des Comptes</a></li>
+                <li><img src="./public/user-connect.png" alt="Avatar" class="user"><a> gadiaga</a></li>
                 <li id="connexion"><a onclick="deconnexion()" id="deconect">Déconnexion</a></li>  
          
             </ul>
@@ -44,9 +43,24 @@
          
         </div>
         <div class="container">  
-          <fieldset>                  
+          <fieldset>       
+          <?php
+              if(isset($_GET['ok'])){
+                    if($_GET['ok'] == 1)
+                    {
+                        echo '<div  style="text-align: center; background-color :green">
+                                  Donnees ajoutees avec succes!
+                              </div>';
+                    }else{
+                        echo '<div style="text-align: center; background-color :red">
+                                                  Erreur Serveur, Contactez l\'administrateur
+                                          </div>';
+                    }
+              }
+            ?>
+           
           <div id="status"></div> 
-            <form method="post"  onsubmit=" event.preventDefault();addCompte();annulChamp()" autocomplete="off">
+            <form method="post" action="CompteClients"  onsubmit="addCompte();">
             <div> 
               <fieldset>
                  <legend>Type de client</legend>
@@ -72,7 +86,7 @@
                       <label for="idclient">Identifiant client</label>
                     </div>
                     <div class="col-75">
-                      <input type="text" id="idclient" name="idclient" placeholder="Entrer l'id du client" value="0" onblur="isNumber(this)"/>
+                      <input type="number" id="idclient" name="idclient" placeholder="Entrer l'id du client" value="0" onblur="isNumber(this)"/>
                        <p id="champs1">* champs obligatoire</p>
                     </div>
                     </fieldset>
@@ -85,7 +99,7 @@
                   <label for="numCompte">Numéro compte</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="numCompte" name="numCompte" placeholder="Entrer numéro compte"  onblur="isNumber(this)"/>
+                  <input type="text" id="numCompte" name="numCompte" placeholder="Entrer numéro compte" value="" onblur="isNumber(this)"/>
                   <p id="champs2">* champs obligatoire</p>
                 </div>
               </div>
@@ -94,15 +108,13 @@
                     <label for="compte">Type de Compte</label>
                 </div>
                   <div class="col-75" >
-                    <label>
-                        <input type="radio" id="epargne" name="typecompte" value="epargne" onclick="epargnee()"/> Epargne
-                    </label>
-                    <label>
-                        <input type="radio" id="courant" name="typecompte" value="courant"  onclick="courante()"/> Courant
-                    </label>
-                    <label>
-                        <input type="radio" id="bloque" name="typecompte" value="bloque" onclick="bloquee()"/> Bloqué
-                    </label>
+                  
+                        <input type="radio" id="epargne" name="typeCompte" value="epargne" onclick="epargnee()"/>   <label> Epargne</label>
+
+                        <input type="radio" id="courant" name="typeCompte" value="courant"  onclick="courante()"/><label >Courant</label> 
+
+                        <input type="radio" id="bloque" name="typeCompte" value="bloque" onclick="bloquee()"/><label >Bloqué</label> 
+                    
                     <p id="champs6">* champs obligatoire</p>
                   </div>
                 </div>
@@ -112,7 +124,7 @@
                          <label for="frais">Fais</label>
                         </div>
                         <div class="col-75">
-                          <input type="number" id="agio" name="agio" placeholder="Entrer les frais d'ouverture"   onblur="isNumber(this)"/>
+                          <input type="number" id="agio" name="agio" placeholder="Entrer les frais d'ouverture"    onblur="isNumber(this)"/>
                         </div>
                     </div> 
                 </div>
@@ -130,7 +142,7 @@
                   <label for="solde">Dépot Initial</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="solde" name="solde" placeholder="Entrer le montant déposé" onblur="isNumber(this)"/>
+                  <input type="number" id="solde" name="solde" placeholder="Entrer le montant déposé" onblur="isNumber(this)"/>
                   <p id="champs4">* champs obligatoire</p>
                 </div>
               </div> 
@@ -156,13 +168,13 @@
                 </div>
                   <div class="col-75">
                     <label  class="typpcliente">
-                        <input type="radio" id="salarie" name="salarie" value="salarie" onclick="salary()"/> Salarié
+                        <input type="radio" id="salarie" name="typeClient" value="salarie" onclick="salary()"/> Salarié
                     </label>
                     <label>
-                        <input type="radio" id="entrepriseC" name="entrepriseC" value="entreprise" onclick="entreprisee()"/> Entreprise
+                        <input type="radio" id="entrepriseC" name="typeClient" value="entreprise" onclick="entreprisee()"/> Entreprise
                     </label>
                     <label>
-                        <input type="radio" id="nonsalaire" name="nonsalaire" value="non_salaire" onclick="non_salary()"/> Non salarié
+                        <input type="radio" id="nonsalaire" name="typeClient" value="non_salaire" onclick="non_salary()"/> Non salarié
                     </label>
                   </div>
                 </div>
@@ -216,7 +228,7 @@
                     <label for="prenom">Prenom</label>
                   </div>
                   <div class="col-75">
-                    <input type="text" id="prenom" name="prennom" placeholder="Entrerle prenom du client" onblur="notNumber(this)">
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrerle prenom du client" onblur="notNumber(this)">
                   </div>
                 </div>
               </div>
