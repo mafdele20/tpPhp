@@ -5,22 +5,22 @@
 <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
-    <link rel="stylesheet" href="../../public/css/compte.css">
-    <script type="text/javascript" src="compte.js"></script>
+    <link rel="stylesheet" href="./public/css/compte.css">
+    <script type="text/javascript" src="./public/js/compte.js"></script>
 </head>
 <body>
     <div class="compte">
         <nav class="navbar">
         <div class="row">
            <div class="col-25">
-             <img src="../../public/logo.jpeg" alt="logo" id="logo">
+             <img src="./public/logo.jpeg" alt="logo" id="logo">
              <h1>BANQUE DU PEUPLE</h1>
            </div>
            <div class="col-75">
             <ul>
-                <li><a href="./add.php">Ajout Compte</a></li>
-                <li><a href="./liste.php">Liste des Comptes</a></li>
-                <li><img src="../../public/user-connect.png" alt="Avatar" class="user"><a> gadiaga</a></li>
+                <li><a href="addCompte">Ajout Compte</a></li>
+                <li><a href="listeCompte">Liste des Comptes</a></li>
+                <li><img src="./public/user-connect.png" alt="Avatar" class="user"><a> gadiaga</a></li>
                 <li id="connexion"><a onclick="deconnexion()" id="deconect">Déconnexion</a></li>  
          
             </ul>
@@ -66,8 +66,9 @@
             </thead>
              <tbody>
                 <?php
-                  require_once '../../model/CompteModel.php';
-                  $listeCompte = listeCompte();
+                  require_once '../../config/Autoloader.php';
+                  $compt = new CompteModel();
+                  $listeCompte =  $compt->listeCompte();
                   foreach($listeCompte as $compte){
                  ?>
                       <tr>

@@ -4,7 +4,7 @@ function testLogin (){
     var msg_error = document.getElementById("error");
 
     if(login.value == "mafatimegadiaga@gmail.com" && pass.value =="passer"){
-        window.location.replace("./view/compte/add.php");
+        window.location.replace("addCompte");
        // alert("you are log in successfully")
     }else{
         if((login.value.trim() == "") || pass.value.trim() ==""){

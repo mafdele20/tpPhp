@@ -1,4 +1,5 @@
 <?php
+
 class Client{
 
         private $email;
@@ -10,6 +11,7 @@ class Client{
         private $employeur;
         private $nomEntreprise;
         private $typeClient;
+
         public function __construct(){
             
             $num = func_num_args();

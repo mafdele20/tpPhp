@@ -1,3 +1,10 @@
+function alertDuree(champ){
+    setTimeout(function(){ 
+             champ.style.display = "none";
+     }, 3000);
+    
+}
+
 function mail(maile){
     if(maile.value.indexOf("@") == -1 &&  document.getElementById("nouveau").checked == true){
         document.getElementById("mail").style.display ="block"   

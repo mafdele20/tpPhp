@@ -1,9 +1,9 @@
 <?php
-require_once '../model/CompteModel.php';
-require_once '../model/ClientModel.php';
+require_once '../config/Autoloader.php';
 
-class Controller{  
-    
+
+class CompteClientController{  
+   
    public function save(){
       extract($_POST);
 
@@ -82,6 +82,6 @@ class Controller{
      
    }
 
- $control = new Controller;
+ $control = new CompteClientController();
  $control->save();
 ?>

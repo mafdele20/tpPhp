@@ -1,9 +1,11 @@
 <html>
 <head>
-<title>Login Form Design</title>
+<title>Login</title>
     <link rel="stylesheet" type="text/css" href="style.css"/> 
     <script type="text/javascript" src="scrip.js"></script> 
+    
 <body>
+
     <div class="loginbox" id ="loginbox">
     <img src="avatar.png" class="avatar"/>
         <h1>login</h1>

@@ -1,6 +1,6 @@
 <?php
-require_once 'DB.php';
-require_once '../entities/Compte.php';
+// require_once 'DB.php';
+// require_once '../entities/Compte.php';
 
 class CompteModel{
 

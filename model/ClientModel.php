@@ -1,6 +1,6 @@
 <?php
-require_once 'DB.php';
-require_once '../entities/Client.php';
+// require_once 'DB.php';
+// require_once '../entities/Client.php';
 
  
 class ClientModel{

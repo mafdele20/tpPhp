@@ -1,4 +1,5 @@
 <?php
+
  class  DB{
 
     private $username ;
@@ -16,7 +17,7 @@
     {
         try {
             if($this->pdo ===null){
-                $pdo = new PDO($this->dsn,$this->username,$this->password);
+                $pdo = new \PDO($this->dsn,$this->username,$this->password);
                 // set the PDO error mode to exception
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->pdo = $pdo;

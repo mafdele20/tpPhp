@@ -1,10 +1,16 @@
 <?php
 
+
 class Employeur
 {
     private $nomEmployeur;
     private $raisonSociale;
     private $cni;
+
+        public function __construct()
+        {
+
+        }
 
        public function getNomEmployeur(){
                 return $this->nomEmployeur;

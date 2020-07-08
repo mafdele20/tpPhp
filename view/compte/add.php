@@ -33,12 +33,12 @@
 
           </div>
            <div class="action">
-               <div class="slb-blanc"><a href="./add.php"> Creer un Compte</a></div>
+               <div class="slb-blanc"><a href="addCompte"> Creer un Compte</a></div>
                <div class="slb-degrade"><a href=""> Faire un Virement </a></div>
                <div class="slb-blanc"><a href="">Bloquer un Compte</a></div>
                <div class="slb-degrade"><a href="">Fermer unCompte</a></div>
                <div class="slb-blanc"><a href=""> Archiver un compte</a></div>
-               <div class="slb-degrade"><a href="./liste.php">Liste des Comptes</a></div>
+               <div class="slb-degrade"><a href="listeCompte">Liste des Comptes</a></div>
            </div>
          
         </div>
@@ -48,7 +48,7 @@
               if(isset($_GET['ok'])){
                     if($_GET['ok'] == 1)
                     {
-                        echo '<div  style="text-align: center; background-color :green">
+                        echo '<div class="alert"  style="text-align: center; background-color :green">
                                   Donnees ajoutees avec succes!
                               </div>';
                     }else{
