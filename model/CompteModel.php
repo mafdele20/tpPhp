@@ -1,7 +1,6 @@
 <?php
-// require_once 'DB.php';
-// require_once '../entities/Compte.php';
-
+namespace model;
+use entities\Compte;
 class CompteModel{
 
     private $db;

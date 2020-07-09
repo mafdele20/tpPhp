@@ -1,4 +1,5 @@
 <?php
+namespace model;
 require_once 'DB.php';
 
 class EmployeurModel{

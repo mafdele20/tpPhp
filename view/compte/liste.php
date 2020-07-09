@@ -34,12 +34,12 @@
 
           </div>
            <div class="action">
-               <div class="slb-blanc"><a href="./add.php"> Creer un Compte</a></div>
+               <div class="slb-blanc"><a href="addCompte"> Creer un Compte</a></div>
                <div class="slb-degrade"><a href=""> Faire un Virement </a></div>
                <div class="slb-blanc"><a href="">Bloquer un Compte</a></div>
                <div class="slb-degrade"><a href="">Fermer unCompte</a></div>
                <div class="slb-blanc"><a href=""> Archiver un compte</a></div>
-               <div class="slb-degrade"><a href="">liste des Comptes</a></div>
+               <div class="slb-degrade"><a href="listeCompte">liste des Comptes</a></div>
        
            </div>
          
@@ -67,6 +67,7 @@
              <tbody>
                 <?php
                   require_once '../../config/Autoloader.php';
+                  use model\CompteModel;
                   $compt = new CompteModel();
                   $listeCompte =  $compt->listeCompte();
                   foreach($listeCompte as $compte){

@@ -1,5 +1,5 @@
 <?php
-
+namespace entities;
 class Compte{
 
         private $cleRib;

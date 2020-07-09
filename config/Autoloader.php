@@ -12,6 +12,7 @@ class Autoloader
 
        if(file_exists("../model/".$class.".php"))
        {
+      
             require_once "../model/".$class.".php";
        }
        else if(file_exists("../controller/".$class.".php"))
@@ -26,13 +27,24 @@ class Autoloader
        {
            require_once  "../../model/".$class.".php";
        }
+
+        /** namespace */
+        else if(file_exists("../../".str_replace("\\", "/", $class.".php")))
+        {        
+         require_once ("../../".str_replace("\\", "/", $class.".php"));
+        }
+        else if(file_exists("../".str_replace("\\", "/", $class.".php")))
+        {
+             require_once ("../".str_replace("\\", "/", $class.".php"));
+        }
        else
        {
            echo '<div class="">
-                    <p>Veillez verifier le classe instancié</p>
-                </div>';
+                    <p>la classe '.$class.' n\'existe pas </p>
+                 </div>';
          
        }
+      
   }
 }
 

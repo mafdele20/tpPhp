@@ -1,5 +1,7 @@
 <?php
 require_once '../config/Autoloader.php';
+use model\CompteModel;
+use entities\compte;
 
 
 class CompteClientController{  
