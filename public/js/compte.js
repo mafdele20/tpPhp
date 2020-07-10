@@ -1,3 +1,44 @@
+function searchValid() {
+
+    var requete = new XMLHttpRequest();
+
+    var url = "http://localhost/tpphp/searchClient";
+
+    var search = document.getElementById('idclient').value;
+
+    var arg = "idclient="+search;
+
+    requete.open("POST",url,true);
+
+    requete.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+
+    requete.onreadystatechange = function(){
+
+        if(requete.readyState == 4 && requete.status == 200){
+          
+            var donne = requete.responseText;
+            console.log(donne);  
+            ok = document.getElementById("trouve");
+            ok.innerHTML = donne;
+            const element = ok;
+            for(var i = 0; i < element.length ; i++){
+                if(search == element[i].value){
+                            
+                    document.getElementById('info').style.display = "block";
+
+                }else{
+
+                    document.getElementById('info').style.display = "none";
+                }
+             }
+        }
+    };
+    requete.send(arg);
+    document.getElementById("trouve").innerHTML = "processing..";
+
+}
+
+
 function alertDuree(champ){
     setTimeout(function(){ 
              champ.style.display = "none";
@@ -258,6 +299,8 @@ function entreprisee(){
     document.getElementById("entrepriseC").value ="entreprise" 
     document.getElementById("salarie").value ="" 
     document.getElementById("nonsalaire").value ="" 
+    document.getElementById("courant").disabled = true
+
 
 }
 
@@ -270,6 +313,8 @@ function non_salary(){
     document.getElementById("nonsalaire").value ="non_salarie"
     document.getElementById("entrepriseC").value ="" 
     document.getElementById("salarie").value ="" 
+    document.getElementById("courant").disabled = true
+
 }
 function epargnee(){
     document.getElementById("frais").style.display = "block"  

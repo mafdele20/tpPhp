@@ -9,7 +9,7 @@ class Autoloader
 
   static function autoload($class)
   {    
-
+    
        if(file_exists("../model/".$class.".php"))
        {
       

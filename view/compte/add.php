@@ -60,7 +60,8 @@
             ?>
            
           <div id="status"></div> 
-            <form method="post" action="CompteClients"  onsubmit="addCompte();">
+            <form method="post" action="CompteClients"  onsubmit="addCompte();" autocomplete="off">
+            
             <div> 
               <fieldset>
                  <legend>Type de client</legend>
@@ -86,80 +87,19 @@
                       <label for="idclient">Identifiant client</label>
                     </div>
                     <div class="col-75">
-                      <input type="number" id="idclient" name="idclient" placeholder="Entrer l'id du client" value="0" onblur="isNumber(this)"/>
-                       <p id="champs1">* champs obligatoire</p>
-                    </div>
+                      <input list="trouve" type="number" id="idclient" name="idclient" placeholder="Entrer l'id du client" onkeyup="searchValid()" />
+                      <datalist id="trouve">
+
+                      </datalist>
+                      <p id="champs1">* champs obligatoire</p>
+                     
+                     </div>
+                       <div class="field" id="info">
+                         <img src="ok.png" alt="ok">
+                      </div>
                     </fieldset>
                   </div>
-             
-            <fieldset>
-                <legend>Informations du Compte</legend>
-              <div class="row">
-                <div class="col-25">
-                  <label for="numCompte">Numéro compte</label>
-                </div>
-                <div class="col-75">
-                  <input type="text" id="numCompte" name="numCompte" placeholder="Entrer numéro compte" value="" onblur="isNumber(this)"/>
-                  <p id="champs2">* champs obligatoire</p>
-                </div>
-              </div>
-               <div class="row">
-                <div class="col-25">
-                    <label for="compte">Type de Compte</label>
-                </div>
-                  <div class="col-75" >
-                  
-                        <input type="radio" id="epargne" name="typeCompte" value="epargne" onclick="epargnee()"/>   <label> Epargne</label>
-
-                        <input type="radio" id="courant" name="typeCompte" value="courant"  onclick="courante()"/><label >Courant</label> 
-
-                        <input type="radio" id="bloque" name="typeCompte" value="bloque" onclick="bloquee()"/><label >Bloqué</label> 
-                    
-                    <p id="champs6">* champs obligatoire</p>
-                  </div>
-                </div>
-                <div>
-                    <div class="row" id="frais">
-                        <div class="col-25">
-                         <label for="frais">Fais</label>
-                        </div>
-                        <div class="col-75">
-                          <input type="number" id="agio" name="agio" placeholder="Entrer les frais d'ouverture"    onblur="isNumber(this)"/>
-                        </div>
-                    </div> 
-                </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="numAgence">Numéro Agence</label>
-                </div>
-                <div class="col-75">
-                  <input type="text" id="numAgence" name="numAgence" placeholder="Entrer le numéro de l'agence"  onblur="isNumber(this)"/>
-                  <p id="champs3">* champs obligatoire</p>
-                </div>
-              </div> 
-              <div class="row">
-                <div class="col-25">
-                  <label for="solde">Dépot Initial</label>
-                </div>
-                <div class="col-75">
-                  <input type="number" id="solde" name="solde" placeholder="Entrer le montant déposé" onblur="isNumber(this)"/>
-                  <p id="champs4">* champs obligatoire</p>
-                </div>
-              </div> 
-              <div class="row">
-                <div class="col-25">
-                  <label for="dateO">Ouverture</label>
-                </div>
-                <div class="col-75">
-                  <input type="date" id="dateO" name="dateO"/>
-                  <p id="champs5">* champs obligatoire</p>
-
-                </div>
-              </div>
-              <div>
-            </div>
-           </fieldset>
-            <div id="masquer">
+                  <div id="masquer">
             <fieldset>
                 <legend>Informations du client</legend>
               <div class="row">
@@ -270,6 +210,74 @@
               
               </fieldset>
               </div>
+            <fieldset>
+                <legend>Informations du Compte</legend>
+              <div class="row">
+                <div class="col-25">
+                  <label for="numCompte">Numéro compte</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="numCompte" name="numCompte" placeholder="Entrer numéro compte" value="" onblur="isNumber(this)"/>
+                  <p id="champs2">* champs obligatoire</p>
+                </div>
+              </div>
+               <div class="row">
+                <div class="col-25">
+                    <label for="compte">Type de Compte</label>
+                </div>
+                  <div class="col-75" >
+                  
+                        <input type="radio" id="epargne" name="typeCompte" value="epargne" onclick="epargnee()"/>   <label> Epargne</label>
+
+                        <input type="radio" id="courant" name="typeCompte" value="courant"  onclick="courante()"/><label >Courant</label> 
+
+                        <input type="radio" id="bloque" name="typeCompte" value="bloque" onclick="bloquee()"/><label >Bloqué</label> 
+                    
+                    <p id="champs6">* champs obligatoire</p>
+                  </div>
+                </div>
+                <div>
+                    <div class="row" id="frais">
+                        <div class="col-25">
+                         <label for="frais">Fais</label>
+                        </div>
+                        <div class="col-75">
+                          <input type="number" id="agio" name="agio" placeholder="Entrer les frais d'ouverture"    onblur="isNumber(this)"/>
+                        </div>
+                    </div> 
+                </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="numAgence">Numéro Agence</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="numAgence" name="numAgence" placeholder="Entrer le numéro de l'agence"  onblur="isNumber(this)"/>
+                  <p id="champs3">* champs obligatoire</p>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-25">
+                  <label for="solde">Dépot Initial</label>
+                </div>
+                <div class="col-75">
+                  <input type="number" id="solde" name="solde" placeholder="Entrer le montant déposé" onblur="isNumber(this)"/>
+                  <p id="champs4">* champs obligatoire</p>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-25">
+                  <label for="dateO">Ouverture</label>
+                </div>
+                <div class="col-75">
+                  <input type="date" id="dateO" name="dateO"/>
+                  <p id="champs5">* champs obligatoire</p>
+
+                </div>
+              </div>
+              <div>
+            </div>
+           </fieldset>
+       
               <div class="form-action-buttons row">
                 <input type="submit" value="valider" name="valider">
                 <input type="reset" value="Annuler">

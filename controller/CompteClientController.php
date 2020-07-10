@@ -1,7 +1,9 @@
 <?php
 require_once '../config/Autoloader.php';
 use model\CompteModel;
-use entities\compte;
+use entities\Compte;
+use model\ClientModel;
+use entities\Client;
 
 
 class CompteClientController{  
@@ -11,7 +13,6 @@ class CompteClientController{
 
       $modelCompte = new CompteModel();  
       $compte = new Compte();
-
       $compte->setNumero($numCompte);
       $compte->setCleRib("comp-".$numCompte);
       $compte->setDate($dateO);

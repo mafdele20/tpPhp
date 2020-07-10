@@ -84,7 +84,7 @@
                           <td><?= $compte['fraisO'] ?></td>
                           <td><?= $compte['agio'] ?></td>
                           <td><?= $compte['client'] ?></td>  
-
+ 
                       </tr>
               <?php
                   }
